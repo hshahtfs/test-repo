@@ -11,6 +11,180 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/acc-wizard.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style type="text/css">
+      label {
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+      .date {
+        color: #AAA;
+          cursor: pointer;
+          //font-size: 14px !important;
+          //padding: 10px 0 !important;
+          text-align: center;
+          text-transform: uppercase;
+          //width: 100%;
+      }
+
+        .date:hover {
+          background: #DDD;
+          color: #FFF;
+        }
+
+      /* calendar root element */
+      #calroot {
+          /* place on top of other elements. set a higher value if nessessary */
+          z-index:10000;
+
+        box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box;
+
+          margin-top:-4px;
+          width: 100%;
+          background-color:#fff;
+          font-size:11px;
+          border: 2px solid #DDD;
+        
+        top: 43px !important; left: 0 !important;
+      }
+
+      #calroot * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* head. contains title, prev/next month controls and possible month/year selectors */
+      #calhead {
+          height: 22px;
+          padding: 10px 0;
+          position: relative;
+      }
+
+      #caltitle {
+          font-size: 14px;
+          text-align: center;
+          line-height: 20px;
+      }
+
+      #calnext, #calprev {
+        background: url(img/calendar-arrows.png) no-repeat;
+        cursor: pointer;
+          display: block;
+        position: absolute;
+        top: 11px;
+          width: 20px; height: 20px;
+      }
+
+        #calprev {
+          background-position: 0 0;
+          left: 10px; 
+        }
+          #calprev:hover { background-position: 0 -20px; }
+          
+        #calnext {
+          background-position: -20px 0;
+          right: 10px;  
+        }
+          #calnext:hover { background-position: -20px -20px; }
+
+      #calprev.caldisabled, #calnext.caldisabled {
+          visibility:hidden;
+      }
+
+      /* year/month selector */
+      #caltitle select {
+          font-size:10px;
+      }
+
+      /* names of the days */
+      #caldays {
+          height: 22px;
+          border-bottom:1px solid #ddd;
+      }
+
+      /* container for weeks */
+      #calweeks {
+          background-color:#fff;
+          margin-top:4px;
+      }
+
+      /* single week */
+      .calweek {
+          clear:left;
+          height: 22px;
+      }
+
+      /* single day */
+      .calweek a {
+          color: #666;
+          font-size:11px;
+          height: 20px;
+          line-height: 20px;
+          text-decoration:none;
+      }
+
+        .calweek a, #caldays span {
+          display: block;
+          float: left;
+          margin: 1%;
+          text-align: center;
+          width: 12.2857142857%;
+        }
+
+      /* different states */
+      .calweek a:hover, .calfocus {
+          background-color:#ddd;
+      }
+
+      /* sunday */
+      a.calsun {
+          color:red;
+      }
+
+      /* offmonth day */
+      a.caloff {
+          color:#ccc;
+      }
+
+      a.caloff:hover {
+          background-color:rgb(245, 245, 250);
+      }
+
+
+      /* unselecteble day */
+      a.caldisabled {
+          background-color:#efefef !important;
+          color:#ccc  !important;
+          cursor:default;
+      }
+
+      /* current day */
+      #calcurrent {
+          background-color: #F8CE78;
+          color:#fff;
+      }
+
+      /* today */
+      #caltoday {
+          background-color:#333;
+          color:#fff;
+      }
+      .calendar {
+        position: relative;
+      }
+      .calendar .arrow {
+        background: url(img/calendar-down-arrow.png) no-repeat;
+        position: absolute;
+        width: 14px; height: 7px;
+        top: 12px; right: 48px;
+      }
+
+
+    </style>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -50,15 +224,15 @@
                 <div class="control-group">
                 	<div class="controls controls-row">
                 		<div class="span4">
-                			<label for="id_name">Customer Name</label>
+                			<label for="id_name"><i class="icon-user"></i> Customer Name</label>
                 			<input type="text" name="id_name" placeholder="Customer Name" />
                 		</div>
                 		<div class="span4">
-                			<label for="id_phone">Mobile/Phone</label>
+                			<label for="id_phone"><i class="icon-phone"></i> Mobile/Phone</label>
                 			<input type="text" name="id_phone" placeholder="Mobile/Phone" />
                 		</div>
                 		<div class="span4">
-                			<label for="id_email">Customer Email</label>
+                			<label for="id_email"><i class="icon-envelope-alt"></i> Customer Email</label>
                 			<input type="text" name="id_email" placeholder="Email" />
                 		</div>
                 	</div>
@@ -85,10 +259,17 @@
                 				<option value="os">Outstation</option>
                 			</select>
                 		</div>
-                		<div class="span4">
+                    <div class="span4">
+                      <label for="id_pickup_date">Pickup Date</label>
+                      <div class="calendar">
+                        <div class="arrow"> </div>
+                        <input id="order_pickup_date" name="id_pickup_date" class="datepicker" type="date" />
+                      </div>
+                    </div>
+                		<!-- <div class="span4">
                 			<label for="id_pickup_date">Pickup Date</label>
-                			<input type="text" name="id_pickup_date" />
-                		</div>
+                			<input type="text" class="datepicker" name="id_pickup_date" />
+                		</div> -->
                 		<div class="span4">
                 			<label for="id_pickup_time">Pickup Time</label>
                 			<input type="text" name="id_pickup_time" />
@@ -199,14 +380,15 @@
       </div>
       <div class="span3" style="padding-left: 2em;">
         <p style="margin-bottom: 2em;">
-          Follow the steps below to add an accordion wizard to your web page.
+          Summary
         </p>
         <ol class="acc-wizard-sidebar">
-          <li class="acc-wizard-todo"><a href="#prerequisites">Prerequisites</a></li>
-          <li class="acc-wizard-todo"><a href="#addwizard">Add Wizard</a></li>
-          <li class="acc-wizard-todo"><a href="#adjusthtml">Adjust HTML</a></li>
-          <li class="acc-wizard-todo"><a href="#viewpage">Release</a></li>
+          <li class="acc-wizard-todo"><a href="#prerequisites">Customer Details</a></li>
+          <li class="acc-wizard-todo"><a href="#addwizard">Booking Details</a></li>
+          <li class="acc-wizard-todo"><a href="#adjusthtml">Select Car</a></li>
+          <li class="acc-wizard-todo"><a href="#viewpage">Fare and Travel</a></li>
         </ol>
+        <div id="summary"></div>
       </div>
     </div>
     </form>
@@ -218,6 +400,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/acc-wizard.min.js"></script>
+    <script src="js/orders.js"></script>
     <script>
       function onNext(parent, panel) {
         hash = "#" + panel.id;
@@ -231,7 +414,20 @@
       $(window).load(function() {
         $(".acc-wizard").accwizard({onNext: onNext, nextType: 'button', backType:'reset'});
       })
+      $(document).ready(function(){
+        $('input[type=text]').each(function (){
+          $(this).keypress(function(){
+            if($('#' + $(this).name + '_sum')){
+              $('#' + $(this).attr('name') + '_sum').text($(this).val());
+            }
+          })
+        })
 
+        $('.accordion-body label').each(function (){
+          var htmlstr = '<label>' + $(this).html() + ' : ' + '<span id="' + $(this).attr('for') + '_sum' + '"></span></label>'
+          $('#summary').html($('#summary').html() + htmlstr);
+        })
+      });
     </script>
 
   </body>
