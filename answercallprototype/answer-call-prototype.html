@@ -182,7 +182,77 @@
         width: 14px; height: 7px;
         top: 12px; right: 48px;
       }
+      .time .left { float: left; }
+      .time .right { float: right; }
+      .time .time-display {
+        display: block;
+        border: 2px #DDD solid;
+        padding: 14px 0 13px;
+        text-align: center;
+        font-size: 1.6em;
+        text-transform: uppercase;
+      }
+      .time .time-range {
+        text-align: center; 
+        margin: 15px auto 0;
+      }
+      .time .time-range .details {
+          clear: both;
+          margin-top: 15px; 
+        }
+        .time .time-range .details small { font-size: 8px; }
 
+        .time .time-range .details .center {
+            color: #CCC;
+            position: relative;
+            top: -1px;
+          }
+          .time .time-range .details .center.mobile {
+            display: none;
+            font-size: 8px;
+          }
+          .range {
+              border:1px inset #ddd;
+              float:left;
+              font-size:20px;
+              margin:0 0 0 15px;
+              padding:3px 0;
+              text-align:center;
+              width:50px;
+              -moz-border-radius:5px;
+              -webkit-border-radius:5px;
+          }
+          .handle {
+              background: url(img/slider-head.png) no-repeat;
+              
+              width: 20px; height: 20px;
+              top:-9px;
+              position:absolute;
+              display:block;
+              margin-top:1px;
+
+          }
+          .slider {
+                background: #999;
+                border-radius: 5px;
+                clear: right;
+                cursor: pointer;
+                margin-top: 10px;
+                position: relative;
+                width: 100%; height: 5px;
+            }
+            .progress {
+              background: #555;
+              display: none;
+                height: 5px;
+                opacity: 0.6;
+            }
+
+        .handle:hover { background-position: 0 -20px; }
+        .handle:active { background-position: 0 -40px; }
+        #order_pickup_time {
+          display: none;
+        }
 
     </style>
 
@@ -271,10 +341,21 @@
                 			<input type="text" class="datepicker" name="id_pickup_date" />
                 		</div> -->
                 		<div class="span4">
-                			<label for="id_pickup_time">Pickup Time</label>
-                			<input type="text" name="id_pickup_time" />
+                			<!-- <label for="id_pickup_time">Pickup Time</label>
+                			<input type="text" name="id_pickup_time" /> -->
+                      <label>Pickup Time</label>
+                        <div class="time">
+                          <span class="time-display">3:00pm</span>
+                          <div class="time-range">
+                            <input id="order_pickup_time" max="2400" min="0" name="order[pickup_time]" step="25" type="range" value="1500" />
+                            <!-- <div class="details"><small class="left">&larr; Earlier</small> <small class="center">Drag and Slide to Change Time</small> <small class="center mobile">Tap Point on Line to Change Time</small> <small class="right">Later &rarr;</small></div> -->
+                          </div>
+                        </div>
                 		</div>
                 	</div>
+                  <div class="controls controls-row">
+                    <div class="span8">&nbsp;</div>
+                  </div>
                 	<div class="controls controls-row">
                 		<div class="span4">
                 			<label for="id_pickup_area">Pickup Area</label>

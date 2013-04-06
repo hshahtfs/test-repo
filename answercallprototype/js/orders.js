@@ -70,10 +70,10 @@ $(document).ready(function(){
 	
 	/* TIME */
 	
-	var $timeDisplay = $(".order form .time .time-display");
+	var $timeDisplay = $(".time .time-display");
 	
 	$("#order_pickup_time").rangeinput({
-		keyboard:false,
+		keyboard:true,
 		change:function(e,v){
 			$timeDisplay.html(timeFromNumber(v));
 		},
@@ -163,7 +163,7 @@ function removePie(e) {
 }
 
 
-function timeFromNumber(number) {
+/*function timeFromNumber(number) {
 	var time = (number * 0.01);
 		time = (Math.floor(time) * 100) + ((time - Math.floor(time)) * 60);
 	
@@ -174,6 +174,39 @@ function timeFromNumber(number) {
 	}
 	
 	return timeString.substr(0,2) + ":" + timeString.substr(2,3) + "pm";
+}*/
+
+function timeFromNumber(number) {
+	var time = (number * 0.01);
+		time = (Math.floor(time) * 100) + ((time - Math.floor(time)) * 60);
+
+	if(time == 0){
+		var timeString = "1200";
+		timetype = "am";
+	}
+	else if(time>0 && time<100){
+		var timeString = "12" + time.toString();
+		timetype = "am";
+	}
+	else if(time>=100 && time <1000){
+		var timeString = "0" + time.toString();
+		timetype = "am";
+	}else if(time>=1000 && time<1200){
+		var timeString = time.toString();
+		timetype = "am";
+	}else if(time>=1200 && time<=1300){
+		var timeString = time.toString();
+		timetype = "pm";
+	}
+	else if(time>=1300 && time<2200){
+		var timeString = "0" + (time - 1200).toString();
+		timetype = "pm";
+	}else{
+		var timeString = (time - 1200).toString();
+		timetype = "pm";
+	}
+	
+	return timeString.substr(0,2) + ":" + timeString.substr(2,3) + timetype;
 }
 
 
