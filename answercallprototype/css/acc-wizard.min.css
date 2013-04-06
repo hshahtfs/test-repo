@@ -1,4 +1,4 @@
-ol.acc-wizard-sidebar{counter-reset:acc-wizard-counter;margin-left:0;padding-left:0;}ol.acc-wizard-sidebar li{position:relative;margin:0 0 0.5em 2em;padding:0.25em 0.75em;list-style:none;display:inline;}
+ol.acc-wizard-sidebar{counter-reset:acc-wizard-counter;margin-left:0;padding-left:0;}ol.acc-wizard-sidebar li{position:relative;margin:0 0 0.5em 2em;padding:0.25em 0.75em;list-style:none;}
 ol.acc-wizard-sidebar li:before{content:counter(acc-wizard-counter);counter-increment:acc-wizard-counter;position:absolute;left:-2em;top:50%;margin-top:-1.3em;height:2em;width:2em;line-height:2em;border:none;background:#0088cc;text-align:center;font-weight:bold;color:white;border-radius:2em;}
 ol.acc-wizard-sidebar li a{color:#333333;}
 ol.acc-wizard-sidebar li:before{background:#333333;}
