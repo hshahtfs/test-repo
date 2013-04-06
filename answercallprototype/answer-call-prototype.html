@@ -200,7 +200,7 @@
           clear: both;
           margin-top: 15px; 
         }
-        .time .time-range .details small { font-size: 8px; }
+        .time .time-range .details small { font-size: 10px; }
 
         .time .time-range .details .center {
             color: #CCC;
@@ -330,41 +330,43 @@
                 			</select>
                 		</div>
                     <div class="span4">
-                      <label for="id_pickup_date">Pickup Date</label>
-                      <div class="calendar">
-                        <div class="arrow"> </div>
-                        <input id="order_pickup_date" name="id_pickup_date" class="datepicker" type="date" />
-                      </div>
+                      <label for="id_pickup_area">Pickup Area</label>
+                      <input type="text" name="id_pickup_area" />
                     </div>
+                    <div class="span4">
+                      <label for="id_drop_area">Drop Area</label>
+                      <input type="text" name="id_drop_area" />
+                    </div>
+                    
                 		<!-- <div class="span4">
                 			<label for="id_pickup_date">Pickup Date</label>
                 			<input type="text" class="datepicker" name="id_pickup_date" />
                 		</div> -->
-                		<div class="span4">
-                			<!-- <label for="id_pickup_time">Pickup Time</label>
-                			<input type="text" name="id_pickup_time" /> -->
-                      <label>Pickup Time</label>
-                        <div class="time">
-                          <span class="time-display">3:00pm</span>
-                          <div class="time-range">
-                            <input id="order_pickup_time" max="2400" min="0" name="order[pickup_time]" step="25" type="range" value="1500" />
-                            <!-- <div class="details"><small class="left">&larr; Earlier</small> <small class="center">Drag and Slide to Change Time</small> <small class="center mobile">Tap Point on Line to Change Time</small> <small class="right">Later &rarr;</small></div> -->
-                          </div>
-                        </div>
-                		</div>
+                		
                 	</div>
                   <div class="controls controls-row">
                     <div class="span8">&nbsp;</div>
                   </div>
                 	<div class="controls controls-row">
                 		<div class="span4">
-                			<label for="id_pickup_area">Pickup Area</label>
-                			<input type="text" name="id_pickup_area" />
-                		</div>
-                		<div class="span4">
-                			<label for="id_drop_area">Drop Area</label>
-                			<input type="text" name="id_drop_area" />
-                		</div>
+                      <label for="id_pickup_date">Pickup Date</label>
+                      <div class="calendar">
+                        <div class="arrow"> </div>
+                        <input id="order_pickup_date" name="id_pickup_date" class="datepicker" type="date" />
+                      </div>
+                    </div>
+                    <div class="span6">
+                      <!-- <label for="id_pickup_time">Pickup Time</label>
+                      <input type="text" name="id_pickup_time" /> -->
+                      <label>Pickup Time</label>
+                        <div class="time">
+                          <span class="time-display">3:00pm</span>
+                          <div class="time-range">
+                            <input id="order_pickup_time" max="2400" min="0" name="order[pickup_time]" step="25" type="range" value="1500" />
+                            <div class="details"><small class="left">&larr; Earlier</small> <small class="center">Drag and Slide to Change Time</small> <small class="center mobile">Tap Point on Line to Change Time</small> <small class="right">Later &rarr;</small></div>   
+                          </div>
+                        </div>
+                    </div>
                 	</div>
                 </div>
               </div> <!--/.accordion-inner -->
@@ -389,10 +391,24 @@
                   			<th>Fare Per KM</th>
                   		</thead>
                   		<tbody>
-                  			<td><input type="radio" name="carselect" /></td>
-                  			<td>Tata Indica Non-AC</td>
-                  			<td>200</td>
-                  			<td>14</td>
+                        <tr>
+                    			<td><input type="radio" name="carselect" /></td>
+                    			<td>Tata Indica Non-AC</td>
+                    			<td>200</td>
+                    			<td>14</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio" name="carselect" /></td>
+                          <td>Tata Indica AC</td>
+                          <td>200</td>
+                          <td>16</td>
+                        </tr>
+                        <tr>
+                          <td><input type="radio" name="carselect" /></td>
+                          <td>Mahindra Logan/Dzire</td>
+                          <td>250</td>
+                          <td>18</td>
+                        </tr>
                   		</tbody>
                   	</table>
                   </div>
@@ -411,34 +427,54 @@
               <div class="accordion-inner">
               	<div class="span8">
               		<div class="control-group">
+                    <div class="controls controls-row">
+                      <div class="span6">
+                        <label for="id_fare">Fare</label>
+                        <input type="text" name="id_fare" />
+                      </div>
+                      <div class="span4">
+                        <label for="id_advance_paid">Advance Paid</label>
+                        <input type="text" name="id_advance_paid" />
+                      </div>
+                    </div>
+                    <div class="controls controls-row">
+                      <div class="span6">
+                        <label for="id_payment">Payment</label>
+                        <input type="text" name="id_payment" />
+                      </div>
+                      <div class="span4">
+                        <label for="id_found_us_through">Found us through</label>
+                        <input type="text" name="id_found_us_through" />
+                      </div>
+                    </div>
                 		<div class="controls controls-row">
               				<div class="span6">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_base_fare">Base Fare</label>
+                				<input type="text" name="id_base_fare" />
                 			</div>
                 			<div class="span4">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_base_km">Base KM</label>
+                				<input type="text" name="id_base_km" />
                 			</div>
                 	</div>
                 	<div class="controls controls-row">
               				<div class="span6">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_extra_km_fare">Extra KM Fare</label>
+                				<input type="text" name="id_extra_km_fare" />
                 			</div>
                 			<div class="span4">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_extra_luggage_fare">Extra Luggage Fare</label>
+                				<input type="text" name="id_extra_luggage_fare" value="50" />
                 			</div>
                 	</div>
                 	<div class="controls controls-row">
               				<div class="span6">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_waiting_charge">Waiting Charge</label>
+                				<input type="text" name="id_waiting_charge" value="50" />
                 			</div>
                 			<div class="span4">
-                				<label for="id_pickup_date">Pickup Date</label>
-                				<input type="text" name="id_pickup_date" />
+                				<label for="id_bus_train_time">Bus/Train Time</label>
+                				<input type="text" name="id_bus_train_time" />
                 			</div>
                 	</div>
                 </div>

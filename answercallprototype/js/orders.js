@@ -73,7 +73,7 @@ $(document).ready(function(){
 	var $timeDisplay = $(".time .time-display");
 	
 	$("#order_pickup_time").rangeinput({
-		keyboard:true,
+		keyboard:false,
 		change:function(e,v){
 			$timeDisplay.html(timeFromNumber(v));
 		},
