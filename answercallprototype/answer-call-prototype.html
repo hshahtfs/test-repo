@@ -253,6 +253,9 @@
         #order_pickup_time {
           display: none;
         }
+        .acc-wizard-todo a{
+          vertical-align: super;
+        }
 
     </style>
 
@@ -520,17 +523,65 @@
           
         </div>
       </div>
-      <div class="span3" style="padding-left: 2em;">
-        <p style="margin-bottom: 2em;">
-          Summary
+      <div id="summary" class="span3">
+        <p>
+          Last 5 Bookings For Customer
+          <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#id_last_five_bookings">Show/Hide</button>
         </p>
+        <div class="collapse" id="id_last_five_bookings">
+        <table class="table table-bordered">
+          <thead>
+            <th>Booking ID</th>
+            <th>Date Time</th>
+            <th>Fare</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TFS-IC-2231</td>
+              <td>12 Apr 2013 05:27 PM</td>
+              <td>550</td>
+            </tr>
+            <tr>
+              <td>TFS-IC-2231</td>
+              <td>10 Apr 2013 02:10 PM</td>
+              <td>650</td>
+            </tr>
+            <tr>
+              <td>TFS-IC-2231</td>
+              <td>10 Apr 2013 02:10 PM</td>
+              <td>650</td>
+            </tr>
+            <tr>
+              <td>TFS-IC-2231</td>
+              <td>10 Apr 2013 02:10 PM</td>
+              <td>650</td>
+            </tr>
+            <tr>
+              <td>TFS-IC-2231</td>
+              <td>10 Apr 2013 02:10 PM</td>
+              <td>650</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
         <ol class="acc-wizard-sidebar">
-          <li class="acc-wizard-todo"><a href="#prerequisites">Customer Details</a></li>
-          <li class="acc-wizard-todo"><a href="#addwizard">Booking Details</a></li>
-          <li class="acc-wizard-todo"><a href="#adjusthtml">Select Car</a></li>
-          <li class="acc-wizard-todo"><a href="#viewpage">Fare and Travel</a></li>
+          <li class="acc-wizard-todo"><a href="#prerequisites">Customer Details</a>
+            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#section-prerequisites">Show/Hide</button>
+          </li>
+          <div id="section-prerequisites" class="collapse in"></div>
+          <li class="acc-wizard-todo"><a href="#addwizard">Booking Details</a>
+            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#section-addwizard">Show/Hide</button>
+          </li>
+          <div id="section-addwizard" class="collapse in"></div>
+          <li class="acc-wizard-todo"><a href="#adjusthtml">Select Car</a>
+            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#section-adjusthtml">Show/Hide</button>
+          </li>
+          <div id="section-adjusthtml" class="collapse in"></div>
+          <li class="acc-wizard-todo"><a href="#viewpage">Fare and Travel</a>
+            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#section-viewpage">Show/Hide</button>
+          </li>
+          <div id="section-viewpage" class="collapse in"></div>
         </ol>
-        <div id="summary"></div>
       </div>
     </div>
     </form>
@@ -565,9 +616,25 @@
           })
         })
 
-        $('.accordion-body label').each(function (){
-          var htmlstr = '<label>' + $(this).html() + ' : ' + '<span id="' + $(this).attr('for') + '_sum' + '"></span></label>'
-          $('#summary').html($('#summary').html() + htmlstr);
+        $('#prerequisites label').each(function (){
+          var htmlstr = '<label>' + $(this).html() + ' : ' + '<span class="text-success" id="' + $(this).attr('for') + '_sum' + '"></span></label>'
+          $('#section-prerequisites').html($('#section-prerequisites').html() + htmlstr);
+        })
+        $('#addwizard label').each(function (){
+          var htmlstr = '<label>' + $(this).html() + ' : ' + '<span class="text-success" id="' + $(this).attr('for') + '_sum' + '"></span></label>'
+          $('#section-addwizard').html($('#section-addwizard').html() + htmlstr);
+        })
+        $('#adjusthtml label').each(function (){
+          var htmlstr = '<label>' + $(this).html() + ' : ' + '<span class="text-success" id="' + $(this).attr('for') + '_sum' + '"></span></label>'
+          $('#section-adjusthtml').html($('#section-adjusthtml').html() + htmlstr);
+        })
+        $('#viewpage label').each(function (){
+          if($(this).attr('for').indexOf('address') > -1){
+
+          }else{
+            var htmlstr = '<label>' + $(this).html() + ' : ' + '<span class="text-success" id="' + $(this).attr('for') + '_sum' + '"></span></label>'
+          $('#section-viewpage').html($('#section-viewpage').html() + htmlstr);  
+          }
         })
       });
       /*$('#list_tariff').on('change', 'input[type=radio]', function(e) {
