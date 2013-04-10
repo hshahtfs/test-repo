@@ -323,8 +323,8 @@
                 	<div class="controls controls-row">
                 		<div class="span4">
                 			<label for="id_booking_type">Booking Type</label>
-                			<select name="id_booking_type">
-                				<option value="p2p">Point To Point</option>
+                			<select id="id_booking_type" name="booking_type">
+                				<option selected="selected" value="p2p">Point To Point</option>
                 				<option value="at">Airport Tranfer</option>
                 				<option value="os">Outstation</option>
                 			</select>
@@ -382,32 +382,55 @@
             <div id="adjusthtml" class="accordion-body collapse in">
               <div class="accordion-inner">
                 <div class="control-group">
-                  <div class="controls controls-row">
+                  <div id="list_tariff" class="controls controls-row">
                   	<table class="table table-striped">
                   		<thead>
                   			<th>&nbsp;</th>
                   			<th>Car</th>
-                  			<th>Base Fare</th>
-                  			<th>Fare Per KM</th>
+                        <th>Day/Night</th>
+                  			<th>First 10 KM in City</th>
+                  			<th>Rate After 1st 10 KM in City</th>
                   		</thead>
                   		<tbody>
                         <tr>
                     			<td><input type="radio" name="carselect" /></td>
-                    			<td>Tata Indica Non-AC</td>
-                    			<td>200</td>
-                    			<td>14</td>
+                    			<td rowspan="2">Tata Indica Non-AC</td>
+                          <td>Day</td>
+                    			<td>200.00</td>
+                    			<td>13.00</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>Night</td>
+                          <td>250.00</td>
+                          <td>14.00</td>
+                        </tr>
+
+                        <tr>
+                          <td><input type="radio" name="carselect" /></td>
+                          <td rowspan="2">Tata Indica AC</td>
+                          <td>Day</td>
+                          <td>200.00</td>
+                          <td>14.00</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>Night</td>
+                          <td>250.00</td>
+                          <td>15.00</td>
                         </tr>
                         <tr>
                           <td><input type="radio" name="carselect" /></td>
-                          <td>Tata Indica AC</td>
-                          <td>200</td>
-                          <td>16</td>
+                          <td rowspan="2">Logan/Indigo</td>
+                          <td>Day</td>
+                          <td>200.00</td>
+                          <td>15.00</td>
                         </tr>
                         <tr>
-                          <td><input type="radio" name="carselect" /></td>
-                          <td>Mahindra Logan/Dzire</td>
-                          <td>250</td>
-                          <td>18</td>
+                          <td>&nbsp;</td>
+                          <td>Night</td>
+                          <td>250.00</td>
+                          <td>16.00</td>
                         </tr>
                   		</tbody>
                   	</table>
@@ -430,64 +453,66 @@
                     <div class="controls controls-row">
                       <div class="span6">
                         <label for="id_fare">Fare</label>
-                        <input type="text" name="id_fare" />
+                        <input type="text" id="id_fare" name="fare" />
                       </div>
                       <div class="span4">
                         <label for="id_advance_paid">Advance Paid</label>
-                        <input type="text" name="id_advance_paid" />
+                        <input type="text" id="id_advance_paid" name="advance_paid" />
                       </div>
                     </div>
                     <div class="controls controls-row">
                       <div class="span6">
                         <label for="id_payment">Payment</label>
-                        <input type="text" name="id_payment" />
+                        <input type="text" id="id_payment" name="payment" />
                       </div>
                       <div class="span4">
                         <label for="id_found_us_through">Found us through</label>
-                        <input type="text" name="id_found_us_through" />
+                        <input type="text" id="id_found_us_through" name="found_us_through" />
                       </div>
                     </div>
                 		<div class="controls controls-row">
               				<div class="span6">
                 				<label for="id_base_fare">Base Fare</label>
-                				<input type="text" name="id_base_fare" />
+                				<input type="text" id="id_base_fare" name="base_fare" />
                 			</div>
                 			<div class="span4">
                 				<label for="id_base_km">Base KM</label>
-                				<input type="text" name="id_base_km" />
+                				<input type="text" id="id_base_km" name="base_km" />
                 			</div>
                 	</div>
                 	<div class="controls controls-row">
               				<div class="span6">
-                				<label for="id_extra_km_fare">Extra KM Fare</label>
-                				<input type="text" name="id_extra_km_fare" />
+                				<label for="id_p2p_km_fare">Extra KM Fare</label>
+                				<input type="text" id="id_p2p_km_fare" name="p2p_km_fare" />
                 			</div>
                 			<div class="span4">
                 				<label for="id_extra_luggage_fare">Extra Luggage Fare</label>
-                				<input type="text" name="id_extra_luggage_fare" value="50" />
+                				<input type="text" id="id_extra_luggage_fare" name="extra_luggage_fare" value="50" />
                 			</div>
                 	</div>
                 	<div class="controls controls-row">
               				<div class="span6">
                 				<label for="id_waiting_charge">Waiting Charge</label>
-                				<input type="text" name="id_waiting_charge" value="50" />
+                				<input type="text" id="id_waiting_charge" name-"waiting_charge" value="50" />
                 			</div>
                 			<div class="span4">
                 				<label for="id_bus_train_time">Bus/Train Time</label>
-                				<input type="text" name="id_bus_train_time" />
+                				<input type="text" id="id_bus_train_time" name="bus_train_time" />
                 			</div>
                 	</div>
                 </div>
               </div>
                 <div class="span4">
-                	<label for="pickup_address">Pickup Address</label>
-                	<textarea name="pickup_address" rows="3"></textarea>
-                	<label for="pickup_address">Drop Address</label>
-                	<textarea name="pickup_address" rows="3"></textarea>
-                	<label for="pickup_address">Instruction</label>
-                	<textarea name="pickup_address" rows="3"></textarea>
-                	<label for="pickup_address">Landmark</label>
-                	<textarea name="pickup_address" rows="3"></textarea>
+
+                	<label for="id_pickup_address">Pickup Address</label>
+                	<textarea id="id_pickup_address" name="pickup_address" rows="3"></textarea>
+                	<label for="id_drop_address">Drop Address</label>
+                	<textarea id="id_drop_address" name="drop_address" rows="3"></textarea>
+                	<label for="id_instructions">Instruction</label>
+                	<textarea id="id_instructions" name="instructions" rows="3"></textarea>
+                	<label for="id_landmark">Landmark</label>
+                  <input type="text" id="id_landmark" name="landmark" />
+                	
                 </div>
               </div> <!--/.accordion-inner -->
             </div> <!-- /#viewpage -->
@@ -545,7 +570,78 @@
           $('#summary').html($('#summary').html() + htmlstr);
         })
       });
+      /*$('#list_tariff').on('change', 'input[type=radio]', function(e) {
+        alert($(this).parent().next().html());
+        $('#id_base_km').val($(this).parent().next().next().html());
+        $('#id_base_fare').val($(this).parent().next().next().next().val());
+      });*/
     </script>
 
+    <script type="text/javascript">
+    function update_fare_fields(refr){
+
+      if($('#id_booking_type').val() == 'p2p' || $('#id_booking_type').val() == 'rt'){
+        console.log("In P2P");
+        console.log("base fare" + refr.parent().next().next().next().html());
+        console.log("extra km fare" + refr.parent().next().next().next().next().html());
+        var base_fare = refr.parent().next().next().next().html();
+        var base_km = 10;
+        var extra_km_fare = refr.parent().next().next().next().next().html();
+        $('#id_base_fare').val(base_fare);
+        $('#id_base_km').val(base_km);
+        $('#id_p2p_km_fare').val(extra_km_fare);
+      }else if($('#id_booking_type').val() == '4h40km' || $('#id_booking_type').val() == '8h80km'){
+        var extra_km_fare = refr.parent().next().next().next().next().html();
+        var extra_hr_fare = refr.parent().next().next().next().next().next().html();
+        $('#id_extra_km_fare').val(extra_km_fare);
+        $('#id_extra_hr_fare').val(extra_hr_fare);
+      }else if($('#id_booking_type').val() == 'os'){
+        var fare_per_km = refr.parent().next().next().html();
+        var min_km_per_day = refr.parent().next().next().next().html();
+        var bata = refr.parent().next().next().next().next().html();
+        $('#id_km_fare').val(fare_per_km);
+        $('#id_min_km_day').val(min_km_per_day);
+        $('#id_driver_bata').val(bata);
+      }
+    }
+    $('#list_tariff').on('change', 'input[type=radio]', function(e) {
+      var car_val = 'Tata Indica';
+      var car_with_ac = false;
+
+      var selected_car = $(this).parent().next().html();
+      
+      update_fare_fields($(this));
+      
+      if(selected_car.indexOf('Indica') != -1){
+        car_val = 'Tata Indica';
+        if(selected_car.indexOf('NAC') != -1){
+          car_with_ac = false;
+        }else{
+          car_with_ac = true;
+        }
+      }else if(selected_car.indexOf('Logan') != -1){
+        car_val = 'Mahindra Logan';
+      }else if(selected_car.indexOf('Xylo') != -1){
+        car_val = 'Toyota Innova 6+1';
+      }else if(selected_car.indexOf('Innova 7+1') != -1){
+        car_val = 'Toyota Innova 7+1';
+      }else if(selected_car.indexOf('Tempo Traveller') != -1){
+        car_val = 'Tempo Traveller';
+        if(selected_car.indexOf('Non-AC') != -1){
+          car_with_ac = false;
+        }else{
+          car_with_ac = true;
+        }
+      }else if(selected_car.indexOf('Etios') != -1){
+        car_val = 'Toyota Etios';
+      }
+      $('#id_car').val(car_val);
+      if(car_with_ac){
+        $('#id_car_with_ac_1').attr('checked','checked');
+      }else{
+        $('#id_car_with_ac_0').attr('checked','checked');
+      }
+    });
+  </script>
   </body>
 </html>
